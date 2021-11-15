@@ -1,27 +1,40 @@
 import React from 'react';
 
+var even = true;
 const onClick = (action) => {
 	return () => {
+		if (even){
 		action(600);
+		even = false;
+		} else {
+			action(200);
+			even = true;
+		}
 	};
 };
+
 
 let Image = () => {
 	const state = React.useState(() => 200);
 	const func = onClick(state[1]);
 
+
+
+
 	console.log('func', func)
 
-	return <>
+	return <div>
 		<img 
-			src="https://upload.wikimedia.org/wikipedia/commons/1/18/%D0%91%D0%BE%D0%BB%D0%BE%D1%82%D0%BE_%D0%A1%D0%B5%D0%BB%D0%B8%D0%B3%D0%B5%D1%80.JPG" 
+			src="https://www.tynker.com/projects/screenshot/5a3975155ae029645f8b45d3/dsfsg.png" 
 			alt="хуй"
 			onClick={func}
 			style={{
 				width: state[0],
 				height: state[0],
-			}} />
-	</>
+			}}
+			 
+			/>
+	</div>
 };
 
 Image = React.memo(Image);
