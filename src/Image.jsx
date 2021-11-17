@@ -1,40 +1,33 @@
 import React from 'react';
 
-var even = true;
-const onClick = (action) => {
+const onClick = (size, action) => {
 	return () => {
-		if (even){
-		action(600);
-		even = false;
-		} else {
+		if (size === 200){
+			action(600);
+		}
+		else {
 			action(200);
-			even = true;
 		}
 	};
 };
 
 
 let Image = () => {
-	const state = React.useState(() => 200);
-	const func = onClick(state[1]);
+	const [ size, setSize ] = React.useState(() => 200);
+	const func = onClick(size, setSize);
 
-
-
-
-	console.log('func', func)
-
-	return <div>
+	return <React.Fragment>
 		<img 
 			src="https://www.tynker.com/projects/screenshot/5a3975155ae029645f8b45d3/dsfsg.png" 
 			alt="хуй"
 			onClick={func}
 			style={{
-				width: state[0],
-				height: state[0],
+				width: size,
+				height: size,
 			}}
 			 
 			/>
-	</div>
+	</React.Fragment>;
 };
 
 Image = React.memo(Image);
