@@ -1,8 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Image from './Image.jsx';
+import Messenges from './Messenges';
+import Sidebar from './Sidebar';
+import Textarea from './Textarea';
 
 render(<React.Fragment>
-	hello world
-	<Image />
+	<Messenges />
+	<Sidebar />
+	<Textarea />
 </React.Fragment>, document.getElementById('root'));
