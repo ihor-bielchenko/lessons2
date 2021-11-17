@@ -1,20 +1,22 @@
 import React from 'react';
 
-const onClick = (size, action) => {
-	return () => {
-		if (size === 200){
-			action(600);
-		}
-		else {
-			action(200);
-		}
-	};
-};
+const onClick = (action) => () => action((currentState) => {
+	if (currentState === 200) {
+		return 600;
+	}
+	else {
+		return 200;
+	}
+
+	console.log('currentState', currentState);
+
+	return 600;
+});
 
 
 let Image = () => {
 	const [ size, setSize ] = React.useState(() => 200);
-	const func = onClick(size, setSize);
+	const func = onClick(setSize);
 
 	return <React.Fragment>
 		<img 
