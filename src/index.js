@@ -5,7 +5,7 @@ import Sidebar from './Sidebar';
 import Textarea from './Textarea';
 
 render(<React.Fragment>
-	<Messenges />
+	{/*<Messenges />*/}
 	<Sidebar />
-	<Textarea />
+	{/*<Textarea />*/}
 </React.Fragment>, document.getElementById('root'));
