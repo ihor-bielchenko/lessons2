@@ -11,8 +11,7 @@ const DivWrapper = styled.div`
 	background-color: #DDD;
 `;
 
-const a = () => {};
-(() => {})()
+
 
 let Sidebar = () => {
 	const [ contacts ] = React.useState(() => [{
