@@ -4,13 +4,13 @@ const onSend = (setMessenges) => (e) => {
 
 	setMessenges((currentState) => {
 		if (currentState['editIndex'] >= 0) {
-			currentState[currentState['editIndex']] = value;
+			currentState.data[currentState.currentContact].messanges[currentState['editIndex']] = value;
 			delete currentState.editIndex;
 		}
 		else {
-			currentState.push(value);
+			currentState.data[currentState.currentContact].messanges.push(value);
 		}
-		return [ ...currentState ];
+		return { ...currentState };
 	});
 	e.currentTarget.previousElementSibling.value = '';
 };

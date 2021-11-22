@@ -1,9 +1,9 @@
 
 const onRemove = (setMessenges, index) => (e) => {
 	setMessenges((currentState) => {
-		currentState.splice(index, 1);
+		currentState.data[currentState.currentContact].messanges.splice(index, 1);
 
-		return [ ...currentState ];
+		return { ...currentState };
 	});
 };
 

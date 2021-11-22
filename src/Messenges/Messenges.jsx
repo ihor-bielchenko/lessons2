@@ -11,19 +11,19 @@ const DivWrapper = styled.div`
 
 let Messenges = ({ 
 	data,
-	setMessenges, 
+	setData, 
 }) => {
 	const collector = [];
 
-	for (let i = 0; i < data.length; i++) {
+	for (let i = 0; i < data.data[data.currentContact].messanges.length; i++) {
 		collector.push(<div key={i}>
 			<p>
-				{data[i]}
+				{data.data[data.currentContact].messanges[i]}
 			</p>
-			<button onClick={onRemove(setMessenges, i)}>
+			<button onClick={onRemove(setData, i)}>
 				delete
 			</button>
-			<button onClick={onEdit(setMessenges, i)}>
+			<button onClick={onEdit(setData, i)}>
 				edit
 			</button>
 		</div>);

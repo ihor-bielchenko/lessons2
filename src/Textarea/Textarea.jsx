@@ -27,7 +27,7 @@ const DivWrapper = styled.div`
 	}
 `;
 
-let Textarea = ({ setMessenges }) => {
+let Textarea = ({ setData }) => {
 	return <React.Fragment>
 		<DivWrapper>
 			<div>
@@ -35,7 +35,7 @@ let Textarea = ({ setMessenges }) => {
 					id="textarea-messenges"
 					rows={8}>
 				</textarea>
-				<button onClick={onSend(setMessenges)}>
+				<button onClick={onSend(setData)}>
 					<span>
 					send
 					</span>

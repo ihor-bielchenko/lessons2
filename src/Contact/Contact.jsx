@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import onContact from './onContact.js';
 
 const DivWrapper = styled.div`
 	display: flex;
@@ -8,7 +9,7 @@ const DivWrapper = styled.div`
 	cursor: pointer;
 
 	&:hover {
-		background-color: red;
+		background-color: blue !important;
 	}
 
 	& > div {
@@ -19,9 +20,22 @@ const DivWrapper = styled.div`
 		height: 48px;
 	}
 `;
-let Contact = ({ name, avatar }) => {
+
+let Contact = ({ 
+	name, 
+	avatar,
+	isActive, 
+	index,
+	setData,
+}) => {
 	return <React.Fragment>
-		<DivWrapper>
+		<DivWrapper 
+			onClick={onContact(setData, index)}
+			style={{
+				backgroundColor: isActive
+					? 'red'
+					: 'initial',
+			}}>
 			<div>
 				<img 
 					src={avatar}
