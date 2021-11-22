@@ -8,7 +8,9 @@ let Page = () => {
 
 	return <React.Fragment>
 		<Sidebar />
-		<Messenges data={messenges} />
+		<Messenges 
+			data={messenges}
+			setMessenges={setMessenges} />
 		<Textarea setMessenges={setMessenges} />
 	</React.Fragment>;
 };

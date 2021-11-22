@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import onRemove from './onRemove.js';
+import onEdit from './onEdit.js';
 
 const DivWrapper = styled.div`
 	position: absolute;
@@ -7,8 +9,10 @@ const DivWrapper = styled.div`
 	right: 0;
 `
 
-let Messenges = ({ data }) => {
-	// console.log('data1', data);
+let Messenges = ({ 
+	data,
+	setMessenges, 
+}) => {
 	const collector = [];
 
 	for (let i = 0; i < data.length; i++) {
@@ -16,6 +20,12 @@ let Messenges = ({ data }) => {
 			<p>
 				{data[i]}
 			</p>
+			<button onClick={onRemove(setMessenges, i)}>
+				delete
+			</button>
+			<button onClick={onEdit(setMessenges, i)}>
+				edit
+			</button>
 		</div>);
 	}
 

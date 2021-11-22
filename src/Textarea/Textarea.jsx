@@ -31,8 +31,9 @@ let Textarea = ({ setMessenges }) => {
 	return <React.Fragment>
 		<DivWrapper>
 			<div>
-				<textarea rows={8}>
-
+				<textarea 
+					id="textarea-messenges"
+					rows={8}>
 				</textarea>
 				<button onClick={onSend(setMessenges)}>
 					<span>
