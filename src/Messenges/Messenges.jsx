@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import onRemove from './onRemove.js';
 import onEdit from './onEdit.js';
+import onChange from './onChange.js';
 
 const DivWrapper = styled.div`
 	position: absolute;
@@ -26,6 +27,8 @@ let Messenges = ({
 			<button onClick={onEdit(setData, i)}>
 				edit
 			</button>
+			<input type="checkbox" onChange={onChange}/>
+
 		</div>);
 	}
 

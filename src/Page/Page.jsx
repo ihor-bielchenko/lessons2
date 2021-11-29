@@ -5,6 +5,7 @@ import Textarea from '../Textarea';
 
 let Page = () => {
 	const [ data, setData ] = React.useState(() => ({
+		
 		currentContact: 0,
 		data: [{
 			id: 1,
