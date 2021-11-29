@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import onSend from './onSend.js';
+import onCancel from './onCancel.js';
 
 const DivWrapper = styled.div`
 	position: fixed;
@@ -11,23 +12,23 @@ const DivWrapper = styled.div`
 	& > div {
 		position: relative;
 		overflow: hidden;
+		text-align: right;
 
 		& > textarea {
 			width: 100%;
 			padding: 0;
-			margin: 0 0 44px;
 			border: 2px solid #dddddd;
 		}
 		& > button {
-			position: absolute;
-			bottom: 0px;
 			font-size: 28px;
-			right: 0;
 		}
 	}
 `;
 
-let Textarea = ({ setData }) => {
+let Textarea = ({ 
+	editIndex, 
+	setData, 
+}) => {
 	return <React.Fragment>
 		<DivWrapper>
 			<div>
@@ -40,6 +41,13 @@ let Textarea = ({ setData }) => {
 					send
 					</span>
 				</button>
+				{editIndex >= 0
+					? <button onClick={onCancel(setData)}>
+						<span>
+						cancel
+						</span>
+					</button>
+					: <React.Fragment />}
 			</div>
 		</DivWrapper>
 	</React.Fragment>;

@@ -5,7 +5,7 @@ import Textarea from '../Textarea';
 
 let Page = () => {
 	const [ data, setData ] = React.useState(() => ({
-		currentContact: 0,
+		currentContact: Number(window.location.pathname.replaceAll('/', '')),
 		data: [{
 			id: 1,
 			name: 'John',
@@ -29,15 +29,21 @@ let Page = () => {
 		}]
 	}));
 
-	return <React.Fragment>
-		<Sidebar 
-			data={data}
-			setData={setData} />
-		<Messenges 
-			data={data}
-			setData={setData} />
-		<Textarea setData={setData} />
-	</React.Fragment>;
+	return data.currentContact >= 0
+		? <React.Fragment>
+			<Sidebar 
+				data={data}
+				setData={setData} />
+			<Messenges 
+				data={data}
+				setData={setData} />
+			<Textarea 
+				editIndex={data.editIndex}
+				setData={setData} />
+		</React.Fragment>
+		: <div>
+			страница не найдена
+		</div>;
 };
 Page = React.memo(Page);
 Page.defaultProps = {
