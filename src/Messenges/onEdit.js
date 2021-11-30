@@ -6,7 +6,7 @@ const onEdit = (setMessenges, index) => (e) => {
 		textarea.value = currentState.data[currentState.currentContact].messanges[index];
 
 		currentState['editIndex'] = index;
-		return currentState;
+		return { ...currentState };
 	});
 };
 

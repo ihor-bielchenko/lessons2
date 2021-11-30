@@ -1,10 +1,25 @@
 
-const onChange = (e) =>  {
+const onChange = (setMessenges, index) => (e) =>  {
+	const newValue = e.currentTarget.checked;
 
-	if (e.currentTarget.checked == true){
-		
-	}
-	console.log("e", e.currentTarget.checked);
+	setMessenges((currentState) => {
+		if (newValue) {
+			currentState.selected.push(index);
+		}
+		else {
+			const indexOf = currentState.selected.indexOf(index);
+
+			if (indexOf > -1) {
+				currentState.selected.splice(indexOf, 1);
+			}
+		}
+		return { ...currentState };
+	});
+	
+	
+
+	
+	
 
 }
 

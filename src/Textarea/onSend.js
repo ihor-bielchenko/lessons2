@@ -1,6 +1,7 @@
 
 const onSend = (setMessenges) => (e) => {
-	const value = e.currentTarget.previousElementSibling.value;
+	const textarea = document.getElementById('textarea-messenges');
+	const value = textarea.value;
 
 	setMessenges((currentState) => {
 		if (currentState['editIndex'] >= 0) {
@@ -12,7 +13,7 @@ const onSend = (setMessenges) => (e) => {
 		}
 		return { ...currentState };
 	});
-	e.currentTarget.previousElementSibling.value = '';
+	textarea.value = '';
 };
 
 export default onSend;

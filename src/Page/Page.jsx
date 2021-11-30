@@ -5,8 +5,11 @@ import Textarea from '../Textarea';
 
 let Page = () => {
 	const [ data, setData ] = React.useState(() => ({
-		
-		currentContact: 0,
+
+		currentContact: Number(window.location.pathname.replaceAll('/', '')),
+
+		selected: [],
+
 		data: [{
 			id: 1,
 			name: 'John',
@@ -27,18 +30,26 @@ let Page = () => {
 			name: 'David',
 			avatar: 'https://upload.wikimedia.org/wikipedia/commons/b/bf/Avast_Mobile_Security_%26_Antivirus.png',
 			messanges: [],
-		}]
+		}],
 	}));
+	console.log('selected', data.selected.length)
 
-	return <React.Fragment>
-		<Sidebar 
-			data={data}
-			setData={setData} />
-		<Messenges 
-			data={data}
-			setData={setData} />
-		<Textarea setData={setData} />
-	</React.Fragment>;
+	return data.currentContact >= 0
+		? <React.Fragment>
+			<Sidebar 
+				data={data}
+				setData={setData} />
+			<Messenges 
+				data={data}
+				setData={setData} />
+			<Textarea 
+				editIndex={data.editIndex}
+				setData={setData}
+				selectedLength={data.selected.length} />
+		</React.Fragment>
+		: <div>
+			страница не найдена
+		</div>;
 };
 Page = React.memo(Page);
 Page.defaultProps = {
