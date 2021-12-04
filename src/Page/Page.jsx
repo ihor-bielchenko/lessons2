@@ -1,40 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Messenges from '../Messenges';
 import Sidebar from '../Sidebar';
 import Textarea from '../Textarea';
 
 let Page = () => {
-	const [ data, setData ] = React.useState(() => ({
+	const data = useSelector((currentState)=> currentState.contacts);
 
-		currentContact: Number(window.location.pathname.replaceAll('/', '')),
+	console.log('selected', data);
 
-		selected: [],
-
-		data: [{
-			id: 1,
-			name: 'John',
-			avatar: 'https://shapka-youtube.ru/wp-content/uploads/2021/02/prikolnaya-avatarka-dlya-patsanov.jpg',
-			messanges: [],
-		}, {
-			id: 2,
-			name: 'Bob',
-			avatar: 'https://upload.wikimedia.org/wikipedia/commons/b/bf/Avast_Mobile_Security_%26_Antivirus.png',
-			messanges: [],
-		}, {
-			id: 3,
-			name: 'Monika',
-			avatar: 'https://upload.wikimedia.org/wikipedia/commons/b/bf/Avast_Mobile_Security_%26_Antivirus.png',
-			messanges: [],
-		}, {
-			id: 4,
-			name: 'David',
-			avatar: 'https://upload.wikimedia.org/wikipedia/commons/b/bf/Avast_Mobile_Security_%26_Antivirus.png',
-			messanges: [],
-		}],
-	}));
-	console.log('selected', data.selected.length)
-
-	return data.currentContact >= 0
+	/*return data.currentContact >= 0
 		? <React.Fragment>
 			<Sidebar 
 				data={data}
@@ -49,7 +24,8 @@ let Page = () => {
 		</React.Fragment>
 		: <div>
 			страница не найдена
-		</div>;
+		</div>;*/
+		return <React.Fragment />;
 };
 Page = React.memo(Page);
 Page.defaultProps = {
