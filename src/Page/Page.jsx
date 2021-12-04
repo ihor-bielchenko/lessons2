@@ -7,25 +7,20 @@ import Textarea from '../Textarea';
 let Page = () => {
 	const data = useSelector((currentState)=> currentState.contacts);
 
-	console.log('selected', data);
-
-	/*return data.currentContact >= 0
+	return data.currentContact >= 0
 		? <React.Fragment>
-			<Sidebar 
-				data={data}
-				setData={setData} />
-			<Messenges 
+			<Sidebar />
+			{/*<Messenges 
 				data={data}
 				setData={setData} />
 			<Textarea 
 				editIndex={data.editIndex}
 				setData={setData}
-				selectedLength={data.selected.length} />
+				selectedLength={data.selected.length} />*/}
 		</React.Fragment>
 		: <div>
 			страница не найдена
-		</div>;*/
-		return <React.Fragment />;
+		</div>;
 };
 Page = React.memo(Page);
 Page.defaultProps = {

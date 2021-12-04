@@ -1,5 +1,7 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import Store from '../components/Store';
 import Contact from '../Contact';
 
 const DivWrapper = styled.div`
@@ -11,20 +13,32 @@ const DivWrapper = styled.div`
 	background-color: #DDD;
 `;
 
-let Sidebar = ({ 
-	data,
-	setData, 
-}) => {
+let Sidebar = () => {
+	const data = useSelector((currentState)=> currentState.contacts);
 	const collector = [];
+
+	// onMount
+	React.useEffect(() => {
+		setTimeout(() => {
+			const contacts = Store().getState().contacts;
+
+			contacts.data[2].name = 'ashndfuiHDUHUIAWHDUHAWU';
+
+			Store().dispatch({
+				type: 'contacts',
+				payload: () => ({ ...contacts }),
+			});
+
+			console.log('===========');
+		}, 3000);
+	}, [
+
+	]);
 
 	for (let i = 0; i < data.data.length; i++) {
 		collector.push(<Contact 
 			key={data.data[i].id}
-			name={data.data[i].name}
-			avatar={data.data[i].avatar}
-			isActive={data.currentContact === i}
-			index={i}
-			setData={setData} />); 
+			index={i} />); 
 	}
 	
 	return <React.Fragment>

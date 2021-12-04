@@ -1,9 +1,15 @@
+import Store from '../components/Store';
 
-const onContact = (setData, index) => (e) => {
-	setData((currentState) => {
-		currentState.currentContact = index;
+const onContact = (e, index) => {
+	const currentState = Store().getState().contacts;
 
-		return { ...currentState };
+	Store().dispatch({
+		type: 'contacts',
+		payload: () => {
+			currentState.currentContact = index;
+
+			return { ...currentState };
+		}
 	});
 };
 
