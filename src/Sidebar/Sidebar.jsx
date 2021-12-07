@@ -15,10 +15,9 @@ const DivWrapper = styled.div`
 
 let Sidebar = () => {
 	const data = useSelector((currentState)=> currentState.contacts);
-	const collector = [];
 
 	// onMount
-	React.useEffect(() => {
+	/*React.useEffect(() => {
 		setTimeout(() => {
 			const contacts = Store().getState().contacts;
 
@@ -33,17 +32,15 @@ let Sidebar = () => {
 		}, 3000);
 	}, [
 
-	]);
+	]);*/
 
-	for (let i = 0; i < data.data.length; i++) {
-		collector.push(<Contact 
-			key={data.data[i].id}
-			index={i} />); 
-	}
-	
 	return <React.Fragment>
 		<DivWrapper>
-			{collector}
+			{data.data.map((item, i) => {
+				return <Contact 
+					key={item.id}
+					index={i} />;
+			})}
 		</DivWrapper>
 	</React.Fragment>;
 };

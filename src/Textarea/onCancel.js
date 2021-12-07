@@ -1,12 +1,17 @@
+import Store from '../components/Store';
 
-const onCancel = (setMessenges) => (e) => {
+const onCancel = (e) => {
 	const textarea = document.getElementById('textarea-messenges');
+	const currentState = Store().getState().contacts;
 
-	setMessenges((currentState) => {
-		delete currentState['editIndex'];
+	Store().dispatch({
+		type: 'contacts',
+		payload: () => {
+			delete currentState['editIndex'];
 
-		textarea.value = '';
-		return { ...currentState };
+			textarea.value = '';
+			return { ...currentState };
+		}
 	});
 };
 

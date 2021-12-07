@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import onRemove from './onRemove.js';
 import onEdit from './onEdit.js';
 import onChange from './onChange.js';
+import { useSelector } from 'react-redux';
+import Store from '../components/Store';
 
 const DivWrapper = styled.div`
 	position: absolute;
@@ -10,32 +12,49 @@ const DivWrapper = styled.div`
 	width: calc(100% - 280px);
 	overflow: auto;
 	right: 0;
-`
+`;
 
-let Messenges = ({ 
-	data,
-	setData, 
+let Messange = ({
+	index,
 }) => {
+	const value = useSelector((currentState)=> currentState.contacts.data[currentState.contacts.currentContact].messanges[index]);
+	const _onRemove = React.useCallback((e) => onRemove(e, index), [
+		index,
+	]);
+	const _onEdit = React.useCallback((e) => onEdit(e, index), [
+		index,
+	]);
+	const _onChange = React.useCallback((e) => onChange(e, index), [
+		index,
+	]);
+
+	return <div>
+		<p>
+			{value}
+		</p>
+		<button onClick={_onRemove}>
+			delete
+		</button>
+		<button onClick={_onEdit}>
+			edit
+		</button>
+		<input type="checkbox" onChange={_onChange}/>
+	</div>;
+};
+Messange = React.memo(Messange);
+Messange.defaultProps = {
+};
+
+let Messenges = () => { 
+	const messanges = useSelector((currentState)=> currentState.contacts.data[currentState.contacts.currentContact].messanges);
 
 	return <React.Fragment>
 		<DivWrapper>
-		{data
-			.data[data.currentContact]
-			.messanges
+		{messanges
 			.map((item, i) => {
-				return <div key={i}>
-					<p>
-						{item}
-					</p>
-					<button onClick={onRemove(setData, i)}>
-						delete
-					</button>
-					<button onClick={onEdit(setData, i)}>
-						edit
-					</button>
-					<input type="checkbox" onChange={onChange(setData, i)}/>
-
-				</div>;
+				return <Messange
+					key={i}
+					index={i} />;
 			})}
 		</DivWrapper>
 	</React.Fragment>;

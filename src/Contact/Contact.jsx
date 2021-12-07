@@ -33,7 +33,7 @@ let Contact = ({
 		index,
 	]);
 
-	// onMount
+	/*// onMount
 	React.useEffect(() => {
 		setTimeout(() => {
 			console.log('===========');
@@ -45,7 +45,7 @@ let Contact = ({
 	React.useEffect(() => () => {
 		console.log('????????1');
 	}, [
-	]);
+	]);*/
 
 	return <React.Fragment>
 		<DivWrapper 

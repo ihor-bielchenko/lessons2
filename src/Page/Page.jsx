@@ -10,13 +10,8 @@ let Page = () => {
 	return data.currentContact >= 0
 		? <React.Fragment>
 			<Sidebar />
-			{/*<Messenges 
-				data={data}
-				setData={setData} />
-			<Textarea 
-				editIndex={data.editIndex}
-				setData={setData}
-				selectedLength={data.selected.length} />*/}
+			<Messenges />
+			<Textarea />
 		</React.Fragment>
 		: <div>
 			страница не найдена

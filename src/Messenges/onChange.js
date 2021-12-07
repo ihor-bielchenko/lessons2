@@ -1,26 +1,25 @@
+import Store from '../components/Store';
 
-const onChange = (setMessenges, index) => (e) =>  {
+const onChange = (e, index) =>  {
 	const newValue = e.currentTarget.checked;
+	const currentState = Store().getState().contacts;
 
-	setMessenges((currentState) => {
-		if (newValue) {
-			currentState.selected.push(index);
-		}
-		else {
-			const indexOf = currentState.selected.indexOf(index);
-
-			if (indexOf > -1) {
-				currentState.selected.splice(indexOf, 1);
+	Store().dispatch({
+		type: 'contacts',
+		payload: () => {
+			if (newValue) {
+				currentState.selected.push(index);
 			}
+			else {
+				const indexOf = currentState.selected.indexOf(index);
+
+				if (indexOf > -1) {
+					currentState.selected.splice(indexOf, 1);
+				}
+			}
+			return { ...currentState };
 		}
-		return { ...currentState };
 	});
-	
-	
-
-	
-	
-
 }
 
 export default onChange;

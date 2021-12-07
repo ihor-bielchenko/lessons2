@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import onSend from './onSend.js';
 import onCancel from './onCancel.js';
 import onDeleteAll from './onDeleteAll.js';
+import Store from '../components/Store';
+import { useSelector } from 'react-redux';
 
 const DivWrapper = styled.div`
 	position: fixed;
@@ -27,13 +29,23 @@ const DivWrapper = styled.div`
 `;
 
 
+				/*editIndex={data.editIndex}
+				setData={setData}
+				selectedLength={data.selected.length} */
 
-let Textarea = ({ 
-	editIndex, 
-	setData,
-	selectedLength,
-}) => {
-	console.log('selectedLength', selectedLength)
+let Textarea = () => {
+
+	const editIndex = useSelector((currentState)=> currentState.contacts.editIndex);
+	const selectedLength = useSelector((currentState)=> currentState.contacts.selected.length);
+	const _onSend = React.useCallback((e) => onSend(e, editIndex), [
+		editIndex,
+	]);
+	const _onCancel = React.useCallback((e) => onCancel(e, editIndex), [
+		editIndex,
+	]);
+	const _onDeleteAll = React.useCallback((e) => onDeleteAll(e, editIndex), [
+		editIndex,
+	]);
 
 	return <React.Fragment>
 		<DivWrapper>
@@ -42,20 +54,20 @@ let Textarea = ({
 					id="textarea-messenges"
 					rows={8}>
 				</textarea>
-				<button onClick={onSend(setData)}>
+				<button onClick={_onSend}>
 					<span>
 					send
 					</span>
 				</button>
 				{editIndex >= 0
-					? <button onClick={onCancel(setData)}>
+					? <button onClick={_onCancel}>
 						<span>
 						cancel
 						</span>
 					</button>
 					: <React.Fragment />}	
 				{selectedLength > 0
-					? <button onClick={onDeleteAll(setData)}>
+					? <button onClick={_onDeleteAll}>
 						<span>
 						deleteAll
 						</span>

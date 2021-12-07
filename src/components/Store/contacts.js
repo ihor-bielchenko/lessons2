@@ -1,8 +1,29 @@
+const projects = [{
+	id: 1,
+	name: 'project1',
+}, {
+	id: 4,
+	name: 'project4',
+}];
+
+const columns = {
+	1: [{
+		id: 1,
+		name: 'column1',
+	}],
+	4: [{
+		id: 1,
+		name: 'column1',
+	}]
+};
+
 export const initialState = () => ({
 
 		currentContact: Number(window.location.pathname.replaceAll('/', '')),
 
 		selected: [],
+
+		editIndex: undefined,
 
 		data: [{
 			id: 1,

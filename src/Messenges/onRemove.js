@@ -1,10 +1,17 @@
+import Store from '../components/Store';
 
-const onRemove = (setMessenges, index) => (e) => {
-	setMessenges((currentState) => {
-		currentState.data[currentState.currentContact].messanges.splice(index, 1);
+const onRemove = (e, index) => {
+	const currentState = Store().getState().contacts;
 
-		return { ...currentState };
+	Store().dispatch({
+		type: 'contacts',
+		payload: () => {
+			currentState.data[currentState.currentContact].messanges.splice(index, 1);
+
+			return { ...currentState };
+		}
 	});
+
 };
 
 export default onRemove;
